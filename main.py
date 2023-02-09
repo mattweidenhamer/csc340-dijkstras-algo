@@ -1,4 +1,22 @@
 from dijsktra import Graph
+
+map_edges_inter = [
+    ('Vancouver', 'Boston', 561),
+    ('Vancouver', 'New York', 683),
+    ('Vancouver', 'Las Vegas', 327),
+    ('Las Vegas', 'SLC',  69),
+    ('Las Vegas', 'Los Angeles', 169),
+    ('Las Vegas', 'New York', 617),
+    ('Las Vegas', 'Chicago', 254),
+    ('SLC', 'Los Angeles', 222),
+    ('Las Vegas', "Ft Lauderdale", 99),
+    ('Los Angeles', 'Ft Lauderdale', 676),
+    ('Ft Lauderdale', 'Boston', 465),
+    ('Ft Lauderdale', 'New York', 299),
+    ('Boston', 'New York', 133),
+    ('New York', 'Minneapolis', 237),
+    ('Chicago', 'New York', 226),
+]
     
 def run_sample():
   edges = [
@@ -27,10 +45,17 @@ def run_sample():
   stop = 'X'
   path = graph.dijsktra_shortest_path(start, stop)
   print (path)
+
+def solve_dalg(edges, start, finish):
+  graph = Graph(edges)
+  path = graph.dijsktra_shortest_path(start, finish)
+  print(f"The shortest path from {start} to {finish} is {path}")
   
 
 def main():
-  run_sample()
+  solve_dalg(map_edges_inter, "Los Angeles", "Chicago")
+  solve_dalg(map_edges_inter, "Los Angeles", "Minneapolis")
+  solve_dalg(map_edges_inter, "SLC", "Boston")
 
 if __name__ == "__main__":
   main()
